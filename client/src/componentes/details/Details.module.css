@@ -1,0 +1,118 @@
+.mainContainer {
+	display: flex;
+	justify-content: center;
+	background-image: url('../../Imagenes/PokemonGroup.jpg');
+	padding: 2% 6% 3%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 87vw;
+}
+
+.infoContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* Tamaño */
+	width: 500px;
+	height: 800px;
+	padding: 24px;
+	margin: 24px;
+	/* Glasmorfismo */
+	background: rgba(255, 255, 255, 0.6);
+	box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.pokeName {
+	text-transform: capitalize;
+}
+
+.pokeName {
+	font-size: 36px;
+	padding: 12px;
+	margin: 0px;
+}
+
+.statsContainer {
+    display: flex;
+    flex-wrap: wrap; /* Ajustar el envoltorio flexible */
+    justify-content: space-between; /* Espaciar los elementos */
+    margin-bottom: 20px; /* Ajustar el margen inferior */
+}
+
+.statsContainer img {
+	width: 30px;
+}
+
+.statsContainer h3 {
+	margin: 0px;
+	font-size: 24px;
+}
+
+.stats {
+    text-align: center; /* Centrar el contenido */
+    flex-basis: 30%; /* Establecer el ancho máximo para cada elemento */
+    margin-bottom: 10px; /* Agregar margen inferior */
+}
+
+.imgPokemon {
+	max-width: 350px;
+}
+
+.pokedexContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 6px;
+	padding: 24px 0px;
+}
+
+.pokedex {
+	font-size: 24px;
+	margin: 0;
+}
+
+.imgPokedex {
+	width: 30px;
+}
+
+.button {
+    display: flex;
+    padding: 10px 20px;
+    background-color: #07121d;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  
+	transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Agregar box-shadow a la transición */
+    box-shadow: 0px 4px 8px rgba(38, 70, 134, 0.931); /* Añadir sombreado */
+}
+
+.button:hover {
+    background-color: #1e4a78;
+	box-shadow: 0px 6px 12px rgb(23, 92, 161);
+}
+.types {
+    text-align: center; /* Centrar el contenido */
+    flex-basis: 30%; /* Establecer el ancho máximo para cada elemento */
+    margin-top: 2px; /* Ajustar el margen superior */
+	margin-left: 230px;
+}
+
+.types img {
+    max-width: 100px; /* Ajustar el tamaño máximo de la imagen */
+}
+
+.types h3 {
+    text-transform: capitalize;
+    font-size: 16px; /* Reducir el tamaño de la fuente si es necesario */
+    margin-top: 5px; /* Ajustar el margen superior para separación */
+}

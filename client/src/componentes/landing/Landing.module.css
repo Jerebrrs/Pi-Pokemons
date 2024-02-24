@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /* Alinea los elementos en la parte inferior */
+    border: 30px;
+    background-image: url('../../Imagenes/PokemonGroup.jpg');
+    padding: 2% 6% 3%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 87vw;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #181818;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
+    background-color: hsla(0, 0%, 99%, 0.481);
+    width: 300px;
+    padding: 10px;
+    margin-top: 90px;
+}
+
+.right > h3 {
+    font-family: "Prompt", sans-serif;
+    font-weight: normal;
+    font-size: larger;
+    width: 300px;
+}
+
+.butn {
+    border: none;
+    color: whitesmoke;
+    background-color: #0c0c0c;
+    height: 33px;
+    width: 250px;
+    border-radius: 9px;
+    padding: 10px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.butn > a {
+    text-decoration: none;
+    font-size: medium;
+}
+
+.butn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    text-align: center;
+    color: black;
+    margin-right: 20px;
+}
+
+.subtitle {
+    text-align: center;
+    color: black;
+    margin-right: 20px;
+}
+
+.img {
+    height: 500px;
+    width: 500px;
+    margin-left: 20px;
+}

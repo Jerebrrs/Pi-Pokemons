@@ -1,0 +1,42 @@
+.input {
+    background-color: antiquewhite;
+    width: 250px;
+    height: 35px;
+    border-radius: 10px;
+    padding-left: 15px;
+    font-size: 20px;
+    font-family: monospace;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border: none;
+    text-transform: capitalize;
+    border: 2px solid rgb(2, 2, 2);
+}
+
+.input::placeholder {
+    font-size: 15px;
+    color: black;
+}
+
+.boton {
+    background-color: rgb(15, 14, 14);
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-left: 10px;
+    height: 35px;
+    color: rgb(220, 231, 241);
+
+}
+
+.boton:hover {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,10 @@
+.cardss {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+    gap: px;
+    justify-content: center;
+    padding-top: 10px;
+    position: relative; /* Establecer posición relativa */
+    z-index: 0; 
+    
+}

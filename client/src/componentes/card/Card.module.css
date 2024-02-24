@@ -1,0 +1,112 @@
+.mainContainer {
+    width: 70px;
+    /* Ajusta el ancho máximo de la tarjeta */
+    height: 125px;
+    /* O ajusta la altura máxima según lo necesites */
+    padding: 79px;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    margin-bottom: 2px;
+    position: relative;
+    flex-direction: column;
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 30px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+}
+
+.mainContainer:hover {
+    background-color: #4d5e839c;
+    box-shadow: 3px 3px 33px 10px rgb(0, 8, 3);
+}
+
+.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(248, 248, 248);
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: rgb(22, 29, 28);
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Agregar box-shadow a la transición */
+    box-shadow: 0px 4px 8px rgba(38, 70, 134, 0.931);
+}
+
+
+
+.pokeName {
+    text-transform: uppercase;
+    margin-top: -79px;
+    /* Ajusta el valor según sea necesario */
+    padding-top: 2px;
+    text-align: center;
+    /* Alinea el texto al centro */
+    z-index: 155;
+    /* Asegura que el nombre esté por encima de la imagen */
+    position: relative;
+    line-height: 50px;
+
+}
+
+.statsContainer {
+    display: flex;
+
+    column-gap: 12px;
+    padding: 12px;
+}
+
+.statsContainer img {
+    width: 25px;
+}
+
+.statsContainer h3 {
+    margin: 0px;
+    font-size: 16px;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.imgPokemon {
+    max-width: 100%;
+    height: auto;
+    width: 160px;
+    margin-top: -14px;
+    /* Reduzco el margen superior para ajustar la imagen */
+    z-index: 0;
+    /* Asegura que la imagen esté detrás del nombre */
+    position: relative;
+}
+
+.containerTypes {
+    display: flex;
+    justify-content: center;
+    align-items: first normal;
+    /*Centra los elementos verticalmente */
+    column-gap: 19px;
+}
+
+.containerTypes img {
+    max-width: 50px;
+}
+
+.types:first-letter {
+    text-transform: uppercase;
+}
+
+.linkCard {
+    text-decoration: none;
+    color: rgb(20, 20, 20);
+}

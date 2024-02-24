@@ -1,0 +1,30 @@
+.typeContainerMain {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	column-gap: 24px;
+	padding: 12px;
+}
+
+.pTypeContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(241, 174, 174);
+	height: 50px;
+	width: 130px;
+	column-gap: 6px;
+	border-radius: 8px;
+}
+
+.pType {
+	text-transform: capitalize;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.buttonX {
+	background: none;
+	border: none;
+	font-size: 16px;
+}

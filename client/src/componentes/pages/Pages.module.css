@@ -1,0 +1,56 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    /* Agregar sombreado como fondo */
+  
+}
+
+.uList {
+	display: flex;
+	list-style-type: none;
+	column-gap: 12px;
+	margin: 0px;
+	padding: 0px;
+}
+
+
+
+.aNumber {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(248, 248, 248);
+	font-size: 14px;
+	border-radius: 5px;
+	background-color: rgb(31, 31, 31);
+	width: 40px;
+	height: 40px;
+	transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Agregar box-shadow a la transición */
+    box-shadow: 0px 4px 8px rgba(38, 70, 134, 0.931);
+
+}
+
+.aNumber:hover {
+    background-color: #1e4a78;
+	box-shadow: 0px 6px 12px rgb(23, 92, 161);
+}
+
+.active {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(248, 248, 248);
+	font-size: 14px;
+	border-radius: 5px;
+	background-color: rgb(22, 29, 28);
+	width: 40px;
+	height: 40px;
+	transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Agregar box-shadow a la transición */
+    box-shadow: 0px 4px 8px rgba(38, 70, 134, 0.931);
+}
+
+.active:hover {
+    background-color: #1e4a78;
+	box-shadow: 0px 6px 12px rgb(23, 92, 161);
+}
