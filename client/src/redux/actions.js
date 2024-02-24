@@ -186,6 +186,7 @@ export const getAllImgTypes = () => async (dispatch) => {
     const imgTypes = [{
         type: 'normal',
         url: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Pok%C3%A9mon_Normal_Type_Icon.svg',
+        color: '#919aa2',
     },
     {
         type: 'fighting',

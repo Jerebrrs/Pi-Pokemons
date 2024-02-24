@@ -23,8 +23,7 @@ const Cards = ({ allPokemon }) => {
   useEffect(() => {
     dispatch(getAllImgTypes());
   }, []);
-
-
+  
 
   return (
     <div className={stylos.cardss}>
@@ -43,7 +42,7 @@ const Cards = ({ allPokemon }) => {
               types={info.types}
               image={info.image}
               typesImg={info.types?.map((type) => {
-                let img = imgTypes?.find((imgypes) => imgypes.type === type);
+                let img = imgTypes?.find((imgTypes) => imgTypes.type === type);
                 return img;
               })}
             />

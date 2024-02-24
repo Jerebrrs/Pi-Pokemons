@@ -19,7 +19,7 @@ const Card = ({ id, name, image, typesImg, }) => {
                 <p>Pokedex:{id}</p>
                 <div className={stylos.containerTypes}>
 
-                    {typesImg.map((typeImg, index) => (
+                    {/* {typesImg.map((typeImg, index) => (
                         <div key={index} className={stylos.typeContainer}>
                             <img
                                 src={typeImg.url}
@@ -28,8 +28,21 @@ const Card = ({ id, name, image, typesImg, }) => {
                             />
                             <p className={stylos.typeName}>{typeImg.type}</p>
                         </div>
+                    ))} */}
+                    {typesImg.map((typeImg, index) => (
+                        <div key={index} className={stylos.typeContainer}>
+                            {typeImg && (
+                                <>
+                                    <img
+                                        src={typeImg.url}
+                                        alt={typeImg.type}
+                                        className={stylos.typeLogo}
+                                    />
+                                    <p className={stylos.typeName}>{typeImg.type}</p>
+                                </>
+                            )}
+                        </div>
                     ))}
-
                 </div>
             </div>
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import stylos from './Create.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPokemon, getAllTypes } from '../../redux/actions'
-
+import { Link } from 'react-router-dom';
 
 
 function Create() {
@@ -14,7 +14,7 @@ function Create() {
     const dispatch = useDispatch();
 
     // Selector para obtener todos los tipos de Pokémon del store de Redux
-    const allTypes = useSelector((state) => state.allType)
+    const allTypes = useSelector((state) => state.allType);
 
     // Efecto que se ejecuta al cargar el componente para obtener todos los tipos de Pokémon
     useEffect(() => {
@@ -27,7 +27,11 @@ function Create() {
         let valueProp = event.target.value;
         if (nameProp !== 'name' && nameProp !== 'image')
             valueProp = parseInt(valueProp);// Convertir a entero los campos numéricos
-        setNewPokemon({ ...newPokemon, [nameProp]: valueProp })
+        // setNewPokemon({ ...newPokemon, [nameProp]: valueProp })
+        setNewPokemon({
+            ...newPokemon,
+            [nameProp]: valueProp
+        })
     };
     // Manejador de cambio de la selección de tipos de Pokémon
 
@@ -60,6 +64,8 @@ function Create() {
             name: '', hp: 0, attack: 0, defense: 0, speed: 0, height: 0, weight: 0, image: '', type: [],
         });
     };
+
+
     // Manejador para eliminar un tipo de Pokémon de la lista de tipos seleccionados
     const onClose = (event) => {
         const typeClose = event.targer.value;
@@ -72,111 +78,118 @@ function Create() {
         })
     };
 
+
     // Función utilitaria para capitalizar la primera letra de una palabra
     function capitalize(word) {
         return word[0].toUpperCase() + word.slice(1).toLowerCase();
     }
     return (
-        <div>
-            <h2>Create Pokemon</h2>
-            <form onSubmit={handlerSubmit}>
-                <div>
-                    <label>Name: </label>
-                    <input
-                        type='text'
-                        name='name'
-                        onChange={handlerChange}
-                        value={newPokemon.name} />
-                </div>
-                <div>
-                    <label>HP: </label>
-                    <input
-                        type='number'
-                        name='hp'
-                        onChange={handlerChange}
-                        value={newPokemon.hp} />
-                </div>
-                <div>
-                    <label>Attack: </label>
-                    <input
-                        type='number'
-                        name='attack'
-                        onChange={handlerChange}
-                        value={newPokemon.attack} />
-                </div>
-                <div>
-                    <label>Defense: </label>
-                    <input
-                        type='number'
-                        name='defense'
-                        onChange={handlerChange}
-                        value={newPokemon.defense} />
-                </div>
-                <div>
-                    <label>Spped: </label>
-                    <input
-                        type='number'
-                        name='speed'
-                        onChange={handlerChange}
-                        value={newPokemon.speed} />
-                </div>
-                <div>
-                    <label>Height: </label>
-                    <input
-                        type='number'
-                        name='height'
-                        onChange={handlerChange}
-                        value={newPokemon.height} />
-                </div>
-                <div>
-                    <label>Weight: </label>
-                    <input
-                        type='number'
-                        name='weight'
-                        onChange={handlerChange}
-                        value={newPokemon.weight} />
-                </div>
-                <div>
-                    <label>Image: </label>
-                    <input
-                        type='text'
-                        name='image'
-                        onChange={handlerChange}
-                        value={newPokemon.image} />
-                </div>
-                <div>
-                    <select
-                        defaultValue={'defaul'}
-                        name={'type'}
-                        id={'type'}
-                        onChange={handlerChange}>
-                        <option disabled={true} value='defaul'>
-                            Select The Type
-                        </option>
-                        {allTypes?.map((type) => (
-                            <option key={type.id} value={type.name}>
-                                {capitalize(type.name)}
+        <div className={stylos.mainContainer}>
+            <div className={stylos.infoContainer}>
+
+                <h2>Create Pokemon</h2>
+                <Link to={'/home'} >
+                    <button className={stylos.button}>Home</button>
+                </Link>
+                <form onSubmit={handlerSubmit}>
+                    <div>
+                        <label>Name: </label>
+                        <input
+                            type='text'
+                            name='name'
+                            onChange={handlerChange}
+                            value={newPokemon.name} />
+                    </div>
+                    <div>
+                        <label>HP: </label>
+                        <input
+                            type='number'
+                            name='hp'
+                            onChange={handlerChange}
+                            value={newPokemon.hp} />
+                    </div>
+                    <div>
+                        <label>Attack: </label>
+                        <input
+                            type='number'
+                            name='attack'
+                            onChange={handlerChange}
+                            value={newPokemon.attack} />
+                    </div>
+                    <div>
+                        <label>Defense: </label>
+                        <input
+                            type='number'
+                            name='defense'
+                            onChange={handlerChange}
+                            value={newPokemon.defense} />
+                    </div>
+                    <div>
+                        <label>Spped: </label>
+                        <input
+                            type='number'
+                            name='speed'
+                            onChange={handlerChange}
+                            value={newPokemon.speed} />
+                    </div>
+                    <div>
+                        <label>Height: </label>
+                        <input
+                            type='number'
+                            name='height'
+                            onChange={handlerChange}
+                            value={newPokemon.height} />
+                    </div>
+                    <div>
+                        <label>Weight: </label>
+                        <input
+                            type='number'
+                            name='weight'
+                            onChange={handlerChange}
+                            value={newPokemon.weight} />
+                    </div>
+                    <div>
+                        <label>Image: </label>
+                        <input
+                            type='text'
+                            name='image'
+                            onChange={handlerChange}
+                            value={newPokemon.image} />
+                    </div>
+                    <div>
+                        <select
+                            defaultValue={'defaul'}
+                            name={'type'}
+                            id={'type'}
+                            onChange={handlerChangeSelect}>
+                            <option disabled={true} value='defaul'>
+                                Select The Type
                             </option>
+                            {allTypes?.map((type) => (
+                                <option key={type.id} value={type.name}>
+                                    {capitalize(type.name)}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className={stylos.typeContainerMain}>
+                        {Array.isArray(newPokemon.type) && newPokemon.type.map((nameType) => (
+                            <div>
+                                <p className={stylos.pType}>{nameType}</p>
+                                <button
+                                    value={nameType}
+                                    className={stylos.buttonX}
+                                    onClick={onClose}>
+                                    x
+                                </button>
+                            </div>
                         ))}
-                    </select>
-                </div>
-                <div className={stylos.typeContainerMain}>
-                    {Array.isArray(newPokemon.type) && newPokemon.type.map((nameType) => (
-                        <div>
-                            <p className={stylos.pType}>{nameType}</p>
-                            <button
-                                value={nameType}
-                                className={stylos.buttonX}
-                                onClick={onClose}>
-                                x
-                            </button>
-                        </div>
-                    ))}
-                </div>
-                <button type='submit'>
-                    Create Pokemon
-                </button>
-            </form >
+                    </div>
+                    <button type='submit'>
+                        Create Pokemon
+                    </button>
+                </form >
+            </div>
         </div >
     )
 }

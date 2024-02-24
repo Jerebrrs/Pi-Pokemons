@@ -28,7 +28,7 @@ nav a {
   transition: 0.3s;
   padding: 10px 20px;
   line-height: 30px;
-  background-color: hsla(0, 100%, 51%, 0.737);
+  background-color: hsl(0, 100%, 51%);
   border: 2px solid #f2e7e7;
   border-radius: 22px;
 }
@@ -37,7 +37,7 @@ nav a:hover {
   font-size: 20px;
   letter-spacing: 2px;
   padding: 10px 20px;
-  background-color: hsla(0, 100%, 51%, 0.737);
+  background-color: hsl(0, 100%, 51%);
   border: 2px solid #f2e7e7;
   border-radius: 22px;
   transition: 0.3s;
@@ -62,7 +62,7 @@ nav a:hover {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(225, 65, 65, 0.739);
+  background-color: rgba(209, 52, 52, 0.841);
   width: 100%; /* Cambiado a 100% para adaptarse al ancho de la pantalla */
   height: 98px;
   border: solid 2px black;

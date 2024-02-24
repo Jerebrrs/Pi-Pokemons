@@ -17,7 +17,8 @@ function Details() {
 
   const { id } = useParams();
 
-console.log(pokeDetail);
+  console.log(pokeDetail);
+
   useEffect(() => {
     dispatch(getPokemonId(id));
     dispatch(getAllImgTypes());
@@ -70,7 +71,7 @@ console.log(pokeDetail);
           </div>
 
           <div>
-            {pokeDetail.createInDb
+            {/* {pokeDetail.createInDb
               ? pokeDetail.Types?.map((type) => (
                 <div
                   className={stylo.types}
@@ -87,7 +88,8 @@ console.log(pokeDetail);
                     </h3>
                   </div>
                 ))
-            }
+            } */}
+      
           </div>
         </div>
       </div>

@@ -96,16 +96,58 @@ const pokeCheckName = async (name) => {
 };
 let pokedex = 1155;
 
+// const pokeCreate = async (body) => {
+//     const { name, hp, attack, defense, speed, height, weight, image, type } = body;
+
+//     if (!name || !hp || !type.length) throw new Error('Faltan datos');
+//     //compruebo que no tengo nombres repetidos
+
+//     await pokeCheckName(name);
+
+//     let newpokemon = await Pokemon.create({
+//         name: name.toLowerCase(),
+//         pokedex: pokedex++,
+//         hp: parseInt(hp),
+//         attack: parseInt(attack),
+//         defense: parseInt(defense),
+//         speed: parseInt(speed),
+//         height: parseInt(height),
+//         weight: parseInt(weight),
+//         image,
+//     });
+
+//     const pokeType = await Type.findAll({
+//         where: {
+//             name: type,
+//         },
+//     });
+
+//     await newpokemon.addType(pokeType);
+//     var typeDb = ([pokeType[0], pokeType[1]] = [pokeType[1], pokeType[0]])
+//     await newpokemon.addType(typeDb);
+
+//     const id = newpokemon.id;
+//     return await Pokemon.findByPk(id, {
+
+//         includes: {
+//             model: Type,
+//             attributes: ['name'],
+//             through: {
+//                 attributes: [],
+//             }
+//         }
+//     })
+// }
+
 const pokeCreate = async (body) => {
     const { name, hp, attack, defense, speed, height, weight, image, type } = body;
 
-    if (!name || !hp || !type.length) throw new Error('Faltan datos');
-    //compruebo que no tengo nombres repetidos
+    if (!name || !hp || !type) throw new Error('Faltan datos');
 
     await pokeCheckName(name);
 
-    let newpokemon = await Pokemon.create({
-        name: name.toLowerCase,
+    let newPokemon = await Pokemon.create({
+        name: name.toLowerCase(),
         pokedex: pokedex++,
         hp: parseInt(hp),
         attack: parseInt(attack),
@@ -116,28 +158,37 @@ const pokeCreate = async (body) => {
         image,
     });
 
-    const pokeType = await Type.findAll({
-        where: {
-            name: type,
-        },
-    });
+    // Manejar el tipo correctamente
+    let typeIds = [];
+    if (Array.isArray(type)) {
+        for (const typeName of type) {
+            const foundType = await Type.findOne({ where: { name: typeName } });
+            if (foundType) {
+                typeIds.push(foundType.id);
+            }
+        }
+    } else {
+        const foundType = await Type.findOne({ where: { name: type } });
+        if (foundType) {
+            typeIds.push(foundType.id);
+        }
+    }
 
-    await newpokemon.addType(pokeType);
-    var typeDb = ([pokeType[0], pokeType[1]] = [pokeType[1], pokeType[0]])
-    await newpokemon.addType(typeDb);
+    // Asignar los tipos al Pokémon
+    await newPokemon.addTypes(typeIds);
 
-    const id = newpokemon.id;
+    const id = newPokemon.id;
     return await Pokemon.findByPk(id, {
-
-        includes: {
+        include: {
             model: Type,
             attributes: ['name'],
             through: {
                 attributes: [],
             }
         }
-    })
-}
+    });
+};
+
 
 
 

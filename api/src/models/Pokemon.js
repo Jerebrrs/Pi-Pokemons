@@ -74,6 +74,12 @@ module.exports = (sequelize) => {
           max: 9999
         }
       },
+      crateInDb: {
+				// Adicional
+				type: DataTypes.BOOLEAN,
+				defaultValue: true,
+				allowNull: false,
+			},
     },
     { timestamps: false }
   );
