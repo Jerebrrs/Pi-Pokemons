@@ -16,6 +16,7 @@ import {
     CREATED,
     GET_POKEMON_ID,
     GET_IMG_TYPES, CREATE_POKEMON,
+    ORDER_FILTER,
 } from './actions-type';
 
 export function createPokemon(state) {
@@ -63,7 +64,7 @@ export const getPokemonName = (name) => async (dispatch) => {
     try {
         const infoName = await axios.get(`http://localhost:3001/pokemons/search?name=${name}`)
         console.log("Data received from API:", infoName.data);
-        
+
         return dispatch({
             type: GET_BY_NAME,
             payload: infoName.data,
@@ -85,13 +86,13 @@ export const getPokemonId = (id) => async (dispatch) => {
         alert(error.message)
     }
 }
-export const filterTypes = (type) => async (dispatch) => {
+export const filterTypes = (type) => {
     console.log('filtro por type', type)
 
-    return dispatch({
+    return {
         type: FILTER_TYPES,
         payload: type,
-    });
+    };
 };
 
 export function pokemonFilter(filter) {
@@ -116,8 +117,9 @@ export function pokemonFilter(filter) {
     }
 }
 
+
 export const orderFilter = (order) => async (dispatch) => {
-    console.log('filtro por order', order)
+    console.log('Order:', order); 
     switch (order) {
         case 'Ascending pokedex':
             dispatch({

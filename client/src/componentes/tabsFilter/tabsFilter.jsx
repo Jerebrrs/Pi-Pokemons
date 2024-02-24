@@ -3,27 +3,19 @@ import { useDispatch } from 'react-redux'
 import { pokemonFilter } from '../../redux/actions'
 import stylos from '../tabsFilter/tabsFilter.module.css'
 
-function FilterTabs({ paginado }) {
-    const [activated, setActivated] = useState({});
+function FilterTabs({ paginado, activated, fnActivated ,paginadoActivated}) {
+    
     const dispatch = useDispatch();
 
     const handlerClick = (event) => {
         const cliked = event.target.name;
-
-        console.log(cliked)
-
-        activated[cliked]
-            ? setActivated({
-                [cliked]: false,
-            })
-            : setActivated({
-                [cliked]: true,
-            })
+        fnActivated(cliked)
+        paginadoActivated();
         dispatch(pokemonFilter(cliked));
         paginado(1);
     }
-    
-    // console.log('activated:', activated);
+
+
     return (
         <div>
             <button

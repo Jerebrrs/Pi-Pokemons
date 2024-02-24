@@ -58,6 +58,23 @@ const getpokemonsDB = async () => {
             },
         },
     });
+    const pokemonsDb = pokeInfoDb.map((pokemon) => {
+        return {
+            id: pokemon.id,
+            name: pokemon.name,
+            pokedex: pokemon.pokedex,
+            hp: pokemon.hp,
+            attack: pokemon.attack,
+            defense: pokemon.defense,
+            speed: pokemon.speed,
+            height: pokemon.height,
+            weight: pokemon.weight,
+            img: pokemon.img,
+            crateInDb: pokemon.crateInDb,
+            Types: pokemon.Types.map((type) => type.name),
+        };
+    });
+    console.log(pokemonsDb);
     return pokeInfoDB;
 }
 
@@ -139,10 +156,60 @@ let pokedex = 1155;
 //     })
 // }
 
+// const pokeCreate = async (body) => {
+//     const { name, hp, attack, defense, speed, height, weight, image, type } = body;
+
+//     if (!name || !hp || !type) throw new Error('Faltan datos');
+
+//     await pokeCheckName(name);
+
+//     let newPokemon = await Pokemon.create({
+//         name: name.toLowerCase(),
+//         pokedex: pokedex++,
+//         hp: parseInt(hp),
+//         attack: parseInt(attack),
+//         defense: parseInt(defense),
+//         speed: parseInt(speed),
+//         height: parseInt(height),
+//         weight: parseInt(weight),
+//         image,
+//     });
+
+//     // Manejar el tipo correctamente
+//     let typeIds = [];
+
+//     // if (Array.isArray(type)) {
+//     //     for (const typeName of type) {
+//     //         const foundType = await Type.findOne({ where: { name: typeName } });
+//     //         if (foundType) {
+//     //             typeIds.push(foundType.id);
+//     //         }
+//     //     }
+//     // } else {
+//     //     const foundType = await Type.findOne({ where: { name: type } });
+//     //     if (foundType) {
+//     //         typeIds.push(foundType.id);
+//     //     }
+//     // }
+
+//     // Asignar los tipos al Pokémon
+//     await newPokemon.addTypes(typeIds);
+
+//     const id = newPokemon.id;
+//     return await Pokemon.findByPk(id, {
+//         include: {
+//             model: Type,
+//             attributes: ['name'],
+//             through: {
+//                 attributes: [],
+//             }
+//         }
+//     });
+// };
+
 const pokeCreate = async (body) => {
     const { name, hp, attack, defense, speed, height, weight, image, type } = body;
-
-    if (!name || !hp || !type) throw new Error('Faltan datos');
+    if ((!name, !hp, !type.length)) throw new Error('Faltan datos');
 
     await pokeCheckName(name);
 
@@ -155,41 +222,40 @@ const pokeCreate = async (body) => {
         speed: parseInt(speed),
         height: parseInt(height),
         weight: parseInt(weight),
-        image,
+        image: image
+            ? image
+            : 'https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg',
     });
 
-    // Manejar el tipo correctamente
-    let typeIds = [];
-    if (Array.isArray(type)) {
-        for (const typeName of type) {
-            const foundType = await Type.findOne({ where: { name: typeName } });
-            if (foundType) {
-                typeIds.push(foundType.id);
-            }
+    const pokeType = await Type.findAll({
+        where: {
+            name: type,
+        },
+    });
+
+    let typesDb;
+    if (type.length === 2) {
+        if (pokeType[0].dataValues.name !== type[0]) {
+            typesDb = [pokeType[0], pokeType[1]] = [pokeType[1], pokeType[0]];
+        } else {
+            typesDb = pokeType;
         }
     } else {
-        const foundType = await Type.findOne({ where: { name: type } });
-        if (foundType) {
-            typeIds.push(foundType.id);
-        }
+        typesDb = pokeType;
     }
 
-    // Asignar los tipos al Pokémon
-    await newPokemon.addTypes(typeIds);
+    await newPokemon.addType(typesDb);
 
-    const id = newPokemon.id;
-    return await Pokemon.findByPk(id, {
+    return await Pokemon.findByPk(newPokemon.id, {
         include: {
             model: Type,
             attributes: ['name'],
             through: {
                 attributes: [],
-            }
-        }
+            },
+        },
     });
 };
-
-
 
 
 module.exports = {

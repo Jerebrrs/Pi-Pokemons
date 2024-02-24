@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
         }
       },
       image: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         defaultValue: 'imagen no ingresada',
       },
       pokedex: {

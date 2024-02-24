@@ -35,3 +35,10 @@ export const desDefense = (array) => array.sort((a, b) => a.defense - b.defense)
 
 export const filterExisted = (array) => array.filter((pokemon) => pokemon.createInDb === true);
 export const filterCreated = (array) => array.filter((pokemon) => pokemon.createInDb === undefined);
+
+
+export const capitalize = (word) =>
+    word[0].toUpperCase() + word.slice(1).toLowerCase();
+
+export const findInImgTypes = (type, array) =>
+    array?.find((element) => element.type === type);

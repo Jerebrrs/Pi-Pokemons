@@ -45,6 +45,17 @@ const Cards = ({ allPokemon }) => {
                 let img = imgTypes?.find((imgTypes) => imgTypes.type === type);
                 return img;
               })}
+              imgDbPokemon={
+                info?.crateInDb
+                  ? info.types?.map((type) => {
+                      let img = imgTypes?.find(
+                        (imgtype) => imgtype.type === type.name
+                      );
+                      return img;
+                    })
+                  : undefined
+              }
+              crateInDb={info.crateInDb}
             />
           ))
         )

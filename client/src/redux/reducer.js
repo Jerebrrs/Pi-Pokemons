@@ -118,12 +118,14 @@ function rootReducer(state = initialState, { type, payload }) {
             };
         }
         case ASCENDENTE_POKEDEX: {
+            console.log('Ascending pokedex action dispatched')
             return {
                 ...state,
                 pokemonsFiltered: ascPokedex(state.pokemonsFiltered),
             };
         }
         case DESCENDENTE_POKEDEX: {
+            console.log('Descending pokedex action dispatched');
             return {
                 ...state,
                 pokemonsFiltered: desPokedex(state.pokemonsFiltered),

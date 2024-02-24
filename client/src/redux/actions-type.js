@@ -24,3 +24,6 @@ export const CREATED = "CREATED";
 export const GET_IMG_TYPES = "GET_IMG_TYPES";
 
 export const CREATE_POKEMON = "CREATE_POKEMON";
+
+
+export const ORDER_FILTER = "ORDER_FILTER";

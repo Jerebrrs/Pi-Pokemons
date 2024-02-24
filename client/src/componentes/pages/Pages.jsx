@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import style from './Pages.module.css';
 
-export default function Pages({ maxPokemonsPage, pokemons, paginado }) {
+export default function Pages({ maxPokemonsPage, pokemons, paginado, avtivated, paginadoActivated }) {
     const [currentPage, setCurrentPage] = useState(1);
 
     const totalPages = Math.ceil(pokemons / maxPokemonsPage);
@@ -13,7 +13,8 @@ export default function Pages({ maxPokemonsPage, pokemons, paginado }) {
 
     const handlerClick = (number) => {
         paginado(number);
-        setCurrentPage(number);
+        // setCurrentPage(number);
+        paginadoActivated(event.target.name)
     };
 
     const goToFirstPage = () => {
