@@ -1,7 +1,6 @@
 const { Pokemon, Type } = require("../db");
 const axios = require('axios');
 require('dotenv').config();
-const{API_KEY}= process.env;
 
 
 const getPokemon = async () => {
