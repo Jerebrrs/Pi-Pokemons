@@ -8,7 +8,7 @@ import defense from '../../Imagenes/defensa.png'
 import sped from '../../Imagenes/sped.png'
 import altura from '../../Imagenes/height.png'
 import hpImg from '../../Imagenes/vida.png'
-import kilos from '../../Imagenes/kilos.png'
+import kilos from '../../Imagenes/Kilos.png'
 
 function Details() {
   const dispatch = useDispatch();
