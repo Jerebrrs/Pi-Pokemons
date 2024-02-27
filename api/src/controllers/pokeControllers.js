@@ -5,7 +5,7 @@ const{API_KEY}= process.env;
 
 
 const getPokemon = async () => {
-    const pokemonApiSol = await axios.get(`${API_KEY}?limit=100`);               //hacemos la solicitud get a la api 
+    const pokemonApiSol = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=100`);               //hacemos la solicitud get a la api 
     const arrayPromesa = await pokemonApiSol?.data.results.map(async (element) => {               //mapeamos para crear un array de la solicitud
         const pokemonData = await axios.get(element.url);
         return pokemonData.data;
