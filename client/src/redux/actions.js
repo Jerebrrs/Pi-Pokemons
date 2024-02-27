@@ -17,7 +17,7 @@ import {
 export function createPokemon(payload) {
     return async function (dispatch) {
         try {
-            const pokeNuevo = await axios.post("http://localhost:3001/pokemons", payload)
+            const pokeNuevo = await axios.post("/pokemons", payload)
             dispatch({
                 type: CREATE_POKEMON,
                 payload: pokeNuevo.data,
@@ -32,7 +32,7 @@ export function createPokemon(payload) {
 export function getPokemon() {
     return async function (dispatch) {
         try {
-            const response = await axios.get("http://localhost:3001/pokemons")
+            const response = await axios.get("/pokemons")
 
             // Agregar la propiedad isCreatedInDb a cada Pokémon en la respuesta
             const pokemonsWithDbInfo = response.data.map(pokemon => {

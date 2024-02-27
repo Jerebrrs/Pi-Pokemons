@@ -6,6 +6,9 @@ import About from './componentes/about/About';
 import Create from './componentes/create/Create';
 import Details from './componentes/details/Details';
 
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:3001/';
 
 function App() {
   return (
