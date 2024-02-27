@@ -55,7 +55,7 @@ export function getPokemon() {
 
 export const getPokemonName = (name) => async (dispatch) => {
     try {
-        const infoName = await axios.get(`http://localhost:3001/pokemons/search?name=${name}`)
+        const infoName = await axios.get(`/pokemons/search?name=${name}`)
         console.log('InfoName:', infoName.data);
         return dispatch({
             type: GET_BY_NAME,
@@ -68,7 +68,7 @@ export const getPokemonName = (name) => async (dispatch) => {
 
 export const getPokemonId = (id) => async (dispatch) => {
     try {
-        const infoID = await axios.get(`http://localhost:3001/pokemons/${id}`)
+        const infoID = await axios.get(`/pokemons/${id}`)
         dispatch({
             type: GET_POKEMON_ID,
             payload: infoID.data,
@@ -119,7 +119,7 @@ export const FilterPokemon = (payload) => {
 
 
 export const getAllTypes = () => async (dispatch) => {
-    const response = await axios.get(`http://localhost:3001/types`)
+    const response = await axios.get(`/types`)
     return dispatch({
         type: GET_ALL_TYPES,
         payload: response.data,
