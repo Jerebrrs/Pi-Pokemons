@@ -16,7 +16,7 @@ function Navbar({ paginado }) {
             </div>
             <div className={stylos.links}>
                 <Link className={stylos.button} to="/">LANDING</Link>
-                <Link className={stylos.button} to={"/create"}>CREAR</Link>
+                <Link className={stylos.button} to={"/create"}>CREATE</Link>
                 <Link className={stylos.button} to={"/about"}>ABOUT</Link>
             </div>
             <div>
