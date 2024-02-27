@@ -1,70 +1,62 @@
 //actions creadoras
 import axios from 'axios';
 import {
-    GET_POKEMON, LOADING, SET_PAGE_POKEMONS, GET_BY_NAME, GET_ALL_TYPES,
-    FILTER_TYPES,
-    ASCENDENTE_POKEDEX,
-    DESCENDENTE_POKEDEX,
-    A_TO_Z,
-    Z_TO_A,
-    REFRESH,
-    MAX_ATTACK,
-    MIN_ATTACK,
-    MAX_DEFENSE,
-    MIN_DEFENSE,
-    EXISTING,
-    CREATED,
     GET_POKEMON_ID,
-    GET_IMG_TYPES, CREATE_POKEMON,
-    ORDER_FILTER,
+    GET_POKEMON,
+    GET_BY_NAME,
+    GET_ALL_TYPES,
+    FILTER_TYPES,
+    GET_IMG_TYPES,
+    CREATE_POKEMON,
+    SORT_BY_NAME,
+    SORT_BY_ATTACK,
+    FILTER_POKEMON,
 } from './actions-type';
 
-export function createPokemon(state) {
+
+export function createPokemon(payload) {
     return async function (dispatch) {
         try {
-            await axios.post("http://localhost:3001/pokemons", state)
+            const pokeNuevo = await axios.post("http://localhost:3001/pokemons", payload)
             dispatch({
-                type: CREATE_POKEMON
+                type: CREATE_POKEMON,
+                payload: pokeNuevo.data,
             })
         } catch (error) {
             console.log(error);
         }
     }
 }
+
 
 export function getPokemon() {
     return async function (dispatch) {
         try {
             const response = await axios.get("http://localhost:3001/pokemons")
 
+            // Agregar la propiedad isCreatedInDb a cada Pokémon en la respuesta
+            const pokemonsWithDbInfo = response.data.map(pokemon => {
+                return {
+                    ...pokemon,
+                    isCreatedInDb: pokemon.createdInDb !== undefined && pokemon.createdInDb === true
+                };
+            });
+            console.log('pokemonsWithDbInfo:::', pokemonsWithDbInfo)
             dispatch({
-                type: GET_POKEMON,                 //ESPECIFICACION DE LA INFO
-                payload: response.data,        //info que guardo en el estado global
-            })
+                type: GET_POKEMON,
+                payload: pokemonsWithDbInfo, // Usar la respuesta modificada con la información de la base de datos
+            });
         } catch (error) {
             console.log(error);
         }
     }
 }
 
-export function loading() {
-    return {
-        type: LOADING,
-    };
-};
-
-export const setPagePokemon = (start, end) => {
-    return {
-        type: SET_PAGE_POKEMONS,
-        payload: { start, end },
-    };
-};
 
 export const getPokemonName = (name) => async (dispatch) => {
     try {
         const infoName = await axios.get(`http://localhost:3001/pokemons/search?name=${name}`)
-        console.log("Data received from API:", infoName.data);
-
+        console.log('InfoName:', infoName.data);
         return dispatch({
             type: GET_BY_NAME,
             payload: infoName.data,
@@ -95,78 +87,35 @@ export const filterTypes = (type) => {
     };
 };
 
-export function pokemonFilter(filter) {
-    return async function (dispatch) {
-        switch (filter) {
-            case 'ALL':
-                dispatch(
-                    getPokemon()
-                )
-                break;
-            case 'Existing':
-                await dispatch(getPokemon());
-                dispatch({ type: EXISTING })
-                break;
-            case 'Created':
-                await dispatch(getPokemon());
-                dispatch({ type: CREATED })
-                break;
-            default:
-                break;
+
+export const sortByName = (payload) => {
+    return {
+        type: SORT_BY_NAME,
+        payload: payload,
+    };
+};
+
+export const sortByAttack = (isAscending) => {
+
+    console.log("sortByAttack action dispatched with payload:", isAscending);
+
+
+    return {
+        type: SORT_BY_ATTACK,
+        payload: isAscending,
+    };
+};
+
+export const FilterPokemon = (payload) => {
+    return async (dispatch) => {
+        try {
+            return dispatch({ type: FILTER_POKEMON, payload: payload })
+        } catch (error) {
+            console.log(error);
         }
     }
 }
-
-
-export const orderFilter = (order) => async (dispatch) => {
-    console.log('Order:', order); 
-    switch (order) {
-        case 'Ascending pokedex':
-            dispatch({
-                type: ASCENDENTE_POKEDEX
-            })
-            break;
-        case 'Desending pokedex':
-            dispatch({
-                type: DESCENDENTE_POKEDEX
-            })
-            break;
-        case 'A to Z':
-            dispatch({
-                type: A_TO_Z
-            })
-            break;
-        case 'Z to A':
-            dispatch({
-                type: Z_TO_A
-            })
-            break;
-        case 'Max Attack':
-            dispatch({
-                type: MAX_ATTACK
-            })
-            break;
-        case 'Min Atttack':
-            dispatch({
-                type: MIN_ATTACK
-            })
-            break;
-        case 'Max deffense':
-            dispatch({
-                type: MAX_DEFENSE
-            })
-            break;
-        case 'Min Deffense':
-            dispatch({
-                type: MIN_DEFENSE
-            })
-            break;
-
-        default:
-            break;
-    }
-}
-
+//////////////
 
 
 export const getAllTypes = () => async (dispatch) => {
@@ -176,12 +125,6 @@ export const getAllTypes = () => async (dispatch) => {
         payload: response.data,
     });
 };
-
-export const refresh = () => async () => {
-    return dispatch({
-        type: REFRESH,
-    })
-}
 
 
 export const getAllImgTypes = () => async (dispatch) => {
@@ -256,7 +199,7 @@ export const getAllImgTypes = () => async (dispatch) => {
     },
     {
         type: 'fairy',
-        url: 'hhttps://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Pok%C3%A9mon_Fairy_Type_Icon.svg/2048px-Pok%C3%A9mon_Fairy_Type_Icon.svg.png',
+        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Pok%C3%A9mon_Fairy_Type_Icon.svg/2048px-Pok%C3%A9mon_Fairy_Type_Icon.svg.png',
     },
     {
         type: 'unknown',

@@ -74,7 +74,7 @@ module.exports = (sequelize) => {
           max: 9999
         }
       },
-      crateInDb: {
+      createdInDb : {
 				// Adicional
 				type: DataTypes.BOOLEAN,
 				defaultValue: true,

@@ -10,14 +10,14 @@ import altura from '../../Imagenes/altura.png'
 import hpImg from '../../Imagenes/hpPoke.png'
 import kilos from '../../Imagenes/kg.png'
 
-function Details({ match, history }) {
+function Details() {
   const dispatch = useDispatch();
   const pokeDetail = useSelector((state) => state.pokeDetail);
   const imgTypes = useSelector((state) => state.imgTypes);
 
   const { id } = useParams();
 
-  console.log('history', pokeDetail);
+ 
 
   useEffect(() => {
     dispatch(getPokemonId(id));
@@ -36,7 +36,7 @@ function Details({ match, history }) {
       return imgTypes.find((imgType) => imgType.type === typeName);
     });
 
-  console.log('images: ', images)
+
 
   return (
     <div className={stylo.mainContainer}>
@@ -78,24 +78,7 @@ function Details({ match, history }) {
           </div>
 
           <div>
-            {/* {pokeDetail.createInDb
-              ? pokeDetail.Types?.map((type) => (
-                <div
-                  className={stylo.types}
-                  key={`${type.name} ${pokeDetail.id}`}>
-                  <img src={images.find((element) => element.type === type.name).url} alt={type.name} />
-                  <h3>{type.name}</h3>
-                </div>)) : pokeDetail.types?.map((type) => (
-                  <div className={stylo.types}
-                    key={`${type} ${pokeDetail.id}`}>
-                    <img src={images.find((element) => element.type === type).url} alt={type.name} />
-                    <h3 className={stylo.types}
-                      key={`${pokeDetail.name}`}>
-                      {type}
-                    </h3>
-                  </div>
-                ))
-            } */}
+        
             {pokeDetail.types?.map((type) => {
               const foundImage = images && images.find((element) => element && (element.type === type.name || element.types === type));
               if (foundImage) {

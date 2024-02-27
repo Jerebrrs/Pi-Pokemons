@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Card from '../card/Card'
 import stylos from '../cards/Cards.module.css'
-import Loading from '../loading/Loading';
+
 import { getAllImgTypes, getPokemon } from '../../redux/actions';
 
 
@@ -23,43 +23,40 @@ const Cards = ({ allPokemon }) => {
   useEffect(() => {
     dispatch(getAllImgTypes());
   }, []);
-  
+
 
   return (
     <div className={stylos.cardss}>
 
       {
-        loading ? (
-          <Loading />
-        ) : (
-          allPokemon?.map((info) => (
-            <Card
-              key={info.id}
-              id={info.id}
-              attack={info.attack}
-              defense={info.defense}
-              name={info.name}
-              types={info.types}
-              image={info.image}
-              typesImg={info.types?.map((type) => {
-                let img = imgTypes?.find((imgTypes) => imgTypes.type === type);
-                return img;
-              })}
-              imgDbPokemon={
-                info?.crateInDb
-                  ? info.types?.map((type) => {
-                      let img = imgTypes?.find(
-                        (imgtype) => imgtype.type === type.name
-                      );
-                      return img;
-                    })
-                  : undefined
-              }
-              crateInDb={info.crateInDb}
-            />
-          ))
-        )
+        allPokemon?.map((info) => (
+          <Card
+            key={info.id}
+            id={info.id}
+            attack={info.attack}
+            defense={info.defense}
+            name={info.name}
+            types={info.types}
+            image={info.image}
+            typesImg={info.types?.map((type) => {
+              let img = imgTypes?.find((imgTypes) => imgTypes.type === type);
+              return img;
+            })}
+            imgDbPokemon={
+              info?.createdInDb
+                ? info.types?.map((type) => {
+                  let img = imgTypes?.find(
+                    (imgtype) => imgtype.type === type.name
+                  );
+                  return img;
+                })
+                : undefined
+            }
+            createdInDb={info.createdInDb}
+          />
+        ))
       }
+
     </div>
   );
 }

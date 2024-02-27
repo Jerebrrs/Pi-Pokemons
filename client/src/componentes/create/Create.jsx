@@ -5,12 +5,73 @@ import { createPokemon, getAllTypes, getAllImgTypes } from '../../redux/actions'
 import { Link } from 'react-router-dom';
 import { capitalize, findInImgTypes } from '../../redux/helpers';
 
-function Create({ history }) {
+export function validate(newPokemon) {
+    let error = {};
+
+    if (!newPokemon.name) {
+        error.name = "Name is required";
+    } else if (newPokemon.name.length > 20 || newPokemon.name.length < 3) {
+        error.name = "Name must be between 3 and 20 characters long";
+    } else if (!/^[a-zA-Z\s]*$/.test(newPokemon.name)) {
+        error.name = "Name must contain only letters and spaces";
+    }
+
+    if (!newPokemon.hp) {
+        error.hp = "HP is required";
+    } else if (newPokemon.hp < 1 || newPokemon.hp > 100) {
+        error.hp = "HP must be between 1 and 100";
+    }
+
+    if (!newPokemon.attack) {
+        error.attack = "Attack is required";
+    } else if (newPokemon.attack < 1 || newPokemon.attack > 100) {
+        error.attack = "Attack must be between 1 and 100";
+    }
+
+    if (!newPokemon.defense) {
+        error.defense = "Defense is required";
+    } else if (newPokemon.defense < 1 || newPokemon.defense > 100) {
+        error.defense = "Defense must be between 1 and 100";
+    }
+
+    if (!newPokemon.height) {
+        error.height = "Height is required";
+    } else if (newPokemon.height < 1 || newPokemon.height > 100) {
+        error.height = "Height must be between 1 and 100";
+    }
+
+    if (!newPokemon.weight) {
+        error.weight = "Weight is required";
+    } else if (newPokemon.weight < 1 || newPokemon.weight > 100) {
+        error.weight = "Weight must be between 1 and 100";
+    }
+
+    if (!newPokemon.image) {
+        error.image = "Image URL is required";
+    } else if (!/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i.test(newPokemon.image)) {
+        error.image = "Please enter a valid image URL (ending with .gif, .jpeg, .jpg, .png, .webp, or .bmp)";
+    }
+
+    if (!newPokemon.type) {
+        error.type = "Please select at least one type";
+    }
+
+    return error;
+}
+
+
+
+function Create() {
+
+
     const imgTypes = useSelector((state) => state.imgTypes)
 
     const [newPokemon, setNewPokemon] = useState({  // useState manega el estado del nuevo pokemon creado y constiene sus prop
         name: '', hp: '', attack: '', defense: '', speed: '', height: '', weight: '', image: '', type: [],
     });
+
+    const [error, setError] = useState({});
+
 
     // Dispatch para enviar acciones al store de Redux
     const dispatch = useDispatch();
@@ -34,6 +95,13 @@ function Create({ history }) {
             ...newPokemon,
             [nameProp]: valueProp
         })
+
+        setError(
+            validate({
+                ...newPokemon,
+                [nameProp]: valueProp.toUpperCase(),
+            })
+        );
     };
     // Manejador de cambio de la selección de tipos de Pokémon
 
@@ -56,6 +124,7 @@ function Create({ history }) {
     // Manejador de envío del formulario de creación de Pokémon
     const handlerSubmit = (event) => {
         event.preventDefault();
+
         dispatch(createPokemon(newPokemon));// Enviar acción para crear el Pokémon
         console.log(newPokemon);
 
@@ -94,10 +163,7 @@ function Create({ history }) {
                     <div>
                         <label>Name: </label>
                         <input
-                            // type='text'
-                            // name='name'
-                            // onChange={handlerChange}
-                            // value={newPokemon.name} 
+
                             type='text'
                             className={stylos.formField}
                             placeholder='name...'
@@ -109,6 +175,7 @@ function Create({ history }) {
                             required
 
                         />
+                        {error.name && <a>{error.name}</a>}
                     </div>
                     <div>
                         <label>HP: </label>
@@ -122,6 +189,7 @@ function Create({ history }) {
                             id='hp'
                             required
                         />
+                        {error.hp && <a>{error.hp}</a>}
                     </div>
                     <div>
                         <label>Attack: </label>
@@ -133,7 +201,9 @@ function Create({ history }) {
                             value={newPokemon.attack}
                             name='attack'
                             id='attack'
-                            required />
+                            required
+                        />
+                        {error.attack && <a>{error.attack}</a>}
                     </div>
                     <div>
                         <label>Defense: </label>
@@ -146,6 +216,7 @@ function Create({ history }) {
                             name='defense'
                             id='defense'
                             required />
+                        {error.defense && <a>{error.defense}</a>}
                     </div>
                     <div>
                         <label>Spped: </label>
@@ -158,6 +229,7 @@ function Create({ history }) {
                             name='speed'
                             id='speed'
                             required />
+                        {error.spped && <a>{error.spped}</a>}
                     </div>
                     <div>
                         <label>Height: </label>
@@ -168,6 +240,7 @@ function Create({ history }) {
                             onChange={handlerChange}
                             value={newPokemon.height}
                             placeholder='Height' />
+                        {error.height && <a>{error.height}</a>}
                     </div>
                     <div>
                         <label>Weight: </label>
@@ -179,6 +252,7 @@ function Create({ history }) {
                             onChange={handlerChange}
                             value={newPokemon.weight}
                         />
+                        {error.weight && <a>{error.weight}</a>}
                     </div>
                     <div>
                         <label>Image: </label>
@@ -190,6 +264,8 @@ function Create({ history }) {
                             value={newPokemon.image}
                             placeholder='URL image .. '
                         />
+                        {error.image && <a>{error.image}</a>}
+
                     </div>
                     <div>
                         <select
@@ -211,20 +287,11 @@ function Create({ history }) {
                                 </option>
                             ))}
                         </select>
+                        {error.type && <a>{error.type}</a>}
                     </div>
 
                     <div className={stylos.typeContainerMain}>
-                        {/* { newPokemon?.type?.map((nameType) => (
-                            <div>
-                                <p className={stylos.pType}>{nameType}</p>
-                                <button
-                                    value={nameType}
-                                    className={stylos.buttonX}
-                                    onClick={onClose}>
-                                    x
-                                </button>
-                            </div>
-                        ))} */}
+
                         {newPokemon?.type?.map((nameType) => (
                             <div className={stylos.imageContainer}
                                 key={nameType}
@@ -245,7 +312,9 @@ function Create({ history }) {
 
                         }
                     </div>
-                    <button type='submit'>
+                    <button type='submit'
+                        disabled={error.name || error.hp || error.image || error.type || error.attack}
+                    >
                         Create Pokemon
                     </button>
                 </form >

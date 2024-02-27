@@ -33,8 +33,8 @@ export const ascDefense = (array) => array.sort((a, b) => b.defense - a.defense)
 export const desDefense = (array) => array.sort((a, b) => a.defense - b.defense);
 
 
-export const filterExisted = (array) => array.filter((pokemon) => pokemon.createInDb === true);
-export const filterCreated = (array) => array.filter((pokemon) => pokemon.createInDb === undefined);
+export const filterExisted = (array) => array.filter((pokemon) => pokemon.crateInDb === true);
+export const filterCreated = (array) => array.filter((pokemon) => pokemon.crateInDb === undefined);
 
 
 export const capitalize = (word) =>

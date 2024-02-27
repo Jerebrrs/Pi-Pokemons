@@ -10,21 +10,23 @@ const getPokemon = async () => {
 
     const promiseData = await Promise.all(arrayPromesa);          //usamos promise para esperar que toda las solicitudes sean un array
 
-    let pokedex = 0;
 
-    const pokeInfoFiltered = promiseData?.map((element) => {             //mapeamos la info que queremos
+
+    const pokeInfoFiltered = promiseData?.map((element, index) => {             //mapeamos la info que queremos
 
         const stats = element.stats.reduce((acc, stat) => {          //utilizo el reduce sobre el array para crear unm {} de los valores
             acc[stat.stat.name] = stat.base_stat;
             return acc;
         }, {});
 
+
+
         return {
             id: element.id,
             name: element.name,
             image: element.sprites.front_default,
             imgShiny: element.sprites.other.home.front_shiny,
-            pokedex: ++pokedex,
+            pokedex: index + 1,
             hp: stats['hp'],
             attack: stats['attack'],
             defense: stats['defense'],
@@ -38,6 +40,8 @@ const getPokemon = async () => {
     return pokeInfoFiltered;
 }
 
+
+
 const getPokemonsName = async (name, info) => {
 
     const pokemonFind = info?.filter((pokemon) =>
@@ -47,37 +51,48 @@ const getPokemonsName = async (name, info) => {
     return pokemonFind;
 }
 
+
+// const getpokemonsDB = async () => {
+//     const pokeInfoDB = await Pokemon.findAll({
+//         include: [{
+//             model: Type,
+//             attributes: ['name'],
+//             through: {
+//                 attributes: [],
+//             },
+//         },]
+//     });
+
+//     const pokemonDataFromDB = pokeInfoDB.map(pokemon => ({
+//         id: pokemon.id,
+//         name: pokemon.name,
+//         image: pokemon.image,
+//         pokedex: pokemon.pokedex,
+//         hp: pokemon.hp,
+//         attack: pokemon.attack,
+//         defense: pokemon.defense,
+//         speed: pokemon.speed,
+//         height: pokemon.height,
+//         weight: pokemon.weight,
+//         types: pokemon.Types.map(type => type.name)
+//     }));
+
+//     console.log(pokemonDataFromDB);
+//     return pokemonDataFromDB;
+// }
 const getpokemonsDB = async () => {
     const pokeInfoDB = await Pokemon.findAll({
 
-        include: {
+        include: [{
             model: Type,
             attributes: ['name'],
             through: {
                 attributes: [],
             },
-        },
+        },]
     });
-    const pokemonsDb = pokeInfoDb.map((pokemon) => {
-        return {
-            id: pokemon.id,
-            name: pokemon.name,
-            pokedex: pokemon.pokedex,
-            hp: pokemon.hp,
-            attack: pokemon.attack,
-            defense: pokemon.defense,
-            speed: pokemon.speed,
-            height: pokemon.height,
-            weight: pokemon.weight,
-            img: pokemon.img,
-            crateInDb: pokemon.crateInDb,
-            Types: pokemon.Types.map((type) => type.name),
-        };
-    });
-    console.log(pokemonsDb);
     return pokeInfoDB;
 }
-
 const getAllPokemons = async () => {
     const apiInfo = await getPokemon();
     const dbinfo = await getpokemonsDB();
@@ -111,101 +126,7 @@ const pokeCheckName = async (name) => {
     if (pokemonFind) throw new Error(`No se pueden crear el pokemon ${name} debido a que ya existe un pokemon con ese nombre`)
 
 };
-let pokedex = 1155;
-
-// const pokeCreate = async (body) => {
-//     const { name, hp, attack, defense, speed, height, weight, image, type } = body;
-
-//     if (!name || !hp || !type.length) throw new Error('Faltan datos');
-//     //compruebo que no tengo nombres repetidos
-
-//     await pokeCheckName(name);
-
-//     let newpokemon = await Pokemon.create({
-//         name: name.toLowerCase(),
-//         pokedex: pokedex++,
-//         hp: parseInt(hp),
-//         attack: parseInt(attack),
-//         defense: parseInt(defense),
-//         speed: parseInt(speed),
-//         height: parseInt(height),
-//         weight: parseInt(weight),
-//         image,
-//     });
-
-//     const pokeType = await Type.findAll({
-//         where: {
-//             name: type,
-//         },
-//     });
-
-//     await newpokemon.addType(pokeType);
-//     var typeDb = ([pokeType[0], pokeType[1]] = [pokeType[1], pokeType[0]])
-//     await newpokemon.addType(typeDb);
-
-//     const id = newpokemon.id;
-//     return await Pokemon.findByPk(id, {
-
-//         includes: {
-//             model: Type,
-//             attributes: ['name'],
-//             through: {
-//                 attributes: [],
-//             }
-//         }
-//     })
-// }
-
-// const pokeCreate = async (body) => {
-//     const { name, hp, attack, defense, speed, height, weight, image, type } = body;
-
-//     if (!name || !hp || !type) throw new Error('Faltan datos');
-
-//     await pokeCheckName(name);
-
-//     let newPokemon = await Pokemon.create({
-//         name: name.toLowerCase(),
-//         pokedex: pokedex++,
-//         hp: parseInt(hp),
-//         attack: parseInt(attack),
-//         defense: parseInt(defense),
-//         speed: parseInt(speed),
-//         height: parseInt(height),
-//         weight: parseInt(weight),
-//         image,
-//     });
-
-//     // Manejar el tipo correctamente
-//     let typeIds = [];
-
-//     // if (Array.isArray(type)) {
-//     //     for (const typeName of type) {
-//     //         const foundType = await Type.findOne({ where: { name: typeName } });
-//     //         if (foundType) {
-//     //             typeIds.push(foundType.id);
-//     //         }
-//     //     }
-//     // } else {
-//     //     const foundType = await Type.findOne({ where: { name: type } });
-//     //     if (foundType) {
-//     //         typeIds.push(foundType.id);
-//     //     }
-//     // }
-
-//     // Asignar los tipos al Pokémon
-//     await newPokemon.addTypes(typeIds);
-
-//     const id = newPokemon.id;
-//     return await Pokemon.findByPk(id, {
-//         include: {
-//             model: Type,
-//             attributes: ['name'],
-//             through: {
-//                 attributes: [],
-//             }
-//         }
-//     });
-// };
+let pokedex = 101;
 
 const pokeCreate = async (body) => {
     const { name, hp, attack, defense, speed, height, weight, image, type } = body;
@@ -247,13 +168,13 @@ const pokeCreate = async (body) => {
     await newPokemon.addType(typesDb);
 
     return await Pokemon.findByPk(newPokemon.id, {
-        include: {
+        include: [{
             model: Type,
             attributes: ['name'],
             through: {
                 attributes: [],
             },
-        },
+        },]
     });
 };
 
