@@ -1,5 +1,5 @@
 import React from 'react'
-import linkedlin from "../../imagenes/linkedlin.png"
+// import linkedlin from "../../imagenes/linkedlin.png"
 import git from "../../imagenes/github.png"
 import { Link } from "react-router-dom";
 import stylos from './About.module.css'
@@ -15,7 +15,7 @@ function About() {
             </button>
             {/* <p className={stylos.link}>HOME</p> */}
           </Link>
-          
+
         </div>
 
         <div className={stylos.datos}>
@@ -30,7 +30,8 @@ function About() {
         </div>
         <div className={stylos.ks}>
           <a href="https://www.linkedin.com/in/kevinjbarrios/" target="_blank" >
-            <img className={stylos.ksli} target="_blank" src={linkedlin} alt="linkedin" />
+            {/* <img className={stylos.ksli} target="_blank" src={linkedlin} alt="linkedin" /> */}
+            LINKEDLIN
           </a>
           <a href='https://github.com/Jerebrrs' target="_blank" >
             <img className={stylos.ksgh} target="_blank" src={git} alt="git" />
