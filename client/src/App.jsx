@@ -8,7 +8,7 @@ import Details from './componentes/details/Details';
 
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001/';
+axios.defaults.baseURL = 'https://pi-pokemons-production-6278.up.railway.app/';
 
 function App() {
   return (
