@@ -1,8 +1,6 @@
 import React from 'react'
 import stylos from '../navbar/Navbar.module.css'
 import { Link } from "react-router-dom"
-
-
 import logo from '../../Imagenes/Logo.png'
 import Searchbar from '../searchbar/Searchbar'
 function Navbar({ paginado }) {

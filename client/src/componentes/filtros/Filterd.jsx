@@ -1,30 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { sortByName, sortByAttack, filterByPokemonDb, pokemonFilter, filterTypes, filterCreated, filterExisted, createdFilterd, filterCreatedInDb ,FilterPokemon} from '../../redux/actions'
+import React from 'react'
+import { sortByName, sortByAttack, filterTypes, FilterPokemon } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
-
-
 
 
 function Filterd() {
     const dispatch = useDispatch();
 
     const allTypes = useSelector(state => state.allType);
-    const createdPokemon = useSelector(state => state.createdPokemon)
-    const allPokemon = useSelector(state => state.allPokemon);
-    const createdInDbPokemon = allPokemon.filter(pokemon => pokemon.createdInDb === true);
-
-
-    const handleClick = (filter) => {
-        dispatch(pokemonFilter(filter));
-    };
-
-
+    
     const handleChange = (event) => {
         const valorSeleccionado = event.target.value;
         dispatch(FilterPokemon(valorSeleccionado));
     };
 
-    //////////
+  
     function handleSortByName(event) {
         dispatch(sortByName(event.target.value));
     }
@@ -40,7 +29,7 @@ function Filterd() {
         dispatch(filterTypes(selectedType)); // Despachar la acción con el tipo seleccionado
     }
 
-    /////////////
+ 
     return (
         <div>
             <header>
@@ -65,9 +54,6 @@ function Filterd() {
                         ))}
                     </select>
 
-                    {/* <button onClick={() => handleClick('All')}>All Pokemons</button>
-                    <button onClick={() => handleClick('Existing')}>Existing Pokemons</button>
-                    <button onClick={() => handleClick('Created')}>Created Pokemons</button> */}
                     <select onChange={handleChange}>
                         <option value="AllPokemons">All Pokemons</option>
                         <option value="PokesFromApi">Original Pokemons</option>

@@ -1,9 +1,9 @@
 .mainContainer {
-    width: 70px;
+    width: 85px;
     /* Ajusta el ancho máximo de la tarjeta */
-    height: 125px;
+    height: 155px;
     /* O ajusta la altura máxima según lo necesites */
-    padding: 79px;
+    padding: 75px;
     align-items: center;
     display: flex;
     margin: auto;
@@ -82,8 +82,8 @@
 .imgPokemon {
     max-width: 100%;
     height: auto;
-    width: 160px;
-    margin-top: -14px;
+    width: 100px;
+    margin-top: -35px;
     /* Reduzco el margen superior para ajustar la imagen */
     z-index: 0;
     /* Asegura que la imagen esté detrás del nombre */
@@ -95,11 +95,12 @@
     justify-content: center;
     align-items: first normal;
     /*Centra los elementos verticalmente */
-    column-gap: 19px;
+    column-gap: 1px;
+    margin-top: 2px; 
 }
 
 .containerTypes img {
-    max-width: 50px;
+    max-width: 49px;
 }
 
 .types:first-letter {
@@ -109,4 +110,32 @@
 .linkCard {
     text-decoration: none;
     color: rgb(20, 20, 20);
+}
+
+.p {
+    text-align: center;
+    /* Centra el texto horizontalmente */
+    font-size: 15px;
+    /* Tamaño de fuente */
+    max-width: 80%;
+    /* Ancho máximo del texto */
+    margin: auto;
+    /* Centra el elemento horizontalmente */
+    margin-top: 10px;
+    /* Espacio superior */
+    font-weight: bold;
+}
+
+.pattack{
+    text-align: center;
+    /* Centra el texto horizontalmente */
+    font-size: 15px;
+    /* Tamaño de fuente */
+    max-width: 80%;
+    /* Ancho máximo del texto */
+    margin: auto;
+    /* Centra el elemento horizontalmente */
+    margin-top: 10px;
+    /* Espacio superior */
+    font-weight: 400px;
 }

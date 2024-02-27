@@ -33,6 +33,7 @@ const Cards = ({ allPokemon }) => {
           <Card
             key={info.id}
             id={info.id}
+            pokedex={info.pokedex}
             attack={info.attack}
             defense={info.defense}
             name={info.name}
