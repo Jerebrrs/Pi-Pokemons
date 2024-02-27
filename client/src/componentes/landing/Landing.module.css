@@ -10,7 +10,24 @@
     height: 100vh;
     width: 87vw;
 }
-
+.infoContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* Tamaño */
+	width: 500px;
+	height: 800px;
+	padding: 24px;
+	margin: 24px;
+	/* Glasmorfismo */
+	background: rgba(255, 255, 255, 0.6);
+	box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
 .right {
     display: flex;
     flex-direction: column;
@@ -65,8 +82,9 @@
     margin-right: 20px;
 }
 
+
+
 .img {
-    height: 500px;
-    width: 500px;
-    margin-left: 20px;
+    width: 550px; /* Ajusta el ancho de la imagen según sea necesario */
+    margin-left: -40px; /* Ajusta la posición hacia la izquierda */
 }

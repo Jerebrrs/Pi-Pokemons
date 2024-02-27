@@ -1,0 +1,45 @@
+.container {
+    align-items: center;
+    display: flex;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    padding-top: 5px;
+}
+
+.select {
+    padding: 8px;
+    /* Espaciado interno */
+    font-size: 14px;
+    /* Tamaño de la fuente */
+    border: 1px solid #0a0538e7;
+    /* Borde */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    appearance: none;
+    /* Elimina el estilo nativo del navegador */
+    background-color: #133ab9c7;
+    /* Color de fondo */
+    width: 200px;
+    /* Ancho del select */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Agregar box-shadow a la transición */
+    box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.733);
+}
+
+/* Estilos para las opciones */
+.option {
+    padding: 8px;
+    /* Espaciado interno */
+    font-size: 14px;
+    /* Tamaño de la fuente */
+}
+
+/* Estilo cuando se enfoca */
+.select:focus {
+    outline: none;
+    /* Quita el contorno al enfocar */
+    border-color: #bbff00;
+    /* Cambia el color del borde al enfocar */
+}
+

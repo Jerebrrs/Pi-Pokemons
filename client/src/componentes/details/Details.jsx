@@ -4,11 +4,11 @@ import { getAllImgTypes, getPokemonId } from '../../redux/actions';
 import { Link, useParams } from 'react-router-dom';
 import stylo from './Details.module.css'
 import attack from '../../Imagenes/attack.webp'
-import defense from '../../Imagenes/defense.jpg'
-import sped from '../../Imagenes/speed.webp'
-import altura from '../../Imagenes/altura.png'
-import hpImg from '../../Imagenes/hpPoke.png'
-import kilos from '../../Imagenes/kg.png'
+import defense from '../../Imagenes/defensa.png'
+import sped from '../../Imagenes/sped.png'
+import altura from '../../Imagenes/height.png'
+import hpImg from '../../Imagenes/vida.png'
+import kilos from '../../Imagenes/kilos.png'
 
 function Details() {
   const dispatch = useDispatch();

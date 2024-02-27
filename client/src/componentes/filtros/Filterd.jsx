@@ -1,19 +1,19 @@
 import React from 'react'
 import { sortByName, sortByAttack, filterTypes, FilterPokemon } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
-
+import stylos from './Filterd.module.css'
 
 function Filterd() {
     const dispatch = useDispatch();
 
     const allTypes = useSelector(state => state.allType);
-    
+
     const handleChange = (event) => {
         const valorSeleccionado = event.target.value;
         dispatch(FilterPokemon(valorSeleccionado));
     };
 
-  
+
     function handleSortByName(event) {
         dispatch(sortByName(event.target.value));
     }
@@ -29,17 +29,18 @@ function Filterd() {
         dispatch(filterTypes(selectedType)); // Despachar la acción con el tipo seleccionado
     }
 
- 
+
     return (
-        <div>
+        <div className={stylos.container}>
             <header>
                 <div>
-                    <select onChange={(event) => handleSortByName(event)}>
-                        <option> Order By Name</option>
-                        <option value="asc">A-Z</option>
-                        <option value="desc">Z-A</option>
+                    <select className={stylos.select}
+                        onChange={(event) => handleSortByName(event)}>
+                        <option className={stylos.option}> Order By Name</option>
+                        <option className={stylos.option} value="asc">A-Z</option>
+                        <option className={stylos.option} value="desc">Z-A</option>
                     </select>
-                    <select
+                    <select className={stylos.select}
                         onChange={(event) => handleSortByAttack(event)}
                     >
                         <option> Order by Attack </option>
@@ -47,14 +48,16 @@ function Filterd() {
                         <option value="desc"> Descendente </option>
                     </select>
 
-                    <select onChange={(event) => handleFilterByType(event)}>
+                    <select className={stylos.select}
+                        onChange={(event) => handleFilterByType(event)}>
                         <option value="All">All Types</option>
                         {allTypes.map((type, index) => (
                             <option key={index} value={type.name}>{type.name}</option>
                         ))}
                     </select>
 
-                    <select onChange={handleChange}>
+                    <select className={stylos.select}
+                        onChange={handleChange}>
                         <option value="AllPokemons">All Pokemons</option>
                         <option value="PokesFromApi">Original Pokemons</option>
                         <option value="PokesFromBD">Created Pokemons</option>

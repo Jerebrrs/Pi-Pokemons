@@ -63,11 +63,12 @@ nav a:hover {
   justify-content: space-around;
   align-items: center;
   background-color: rgba(209, 52, 52, 0.841);
-  width: 100%; /* Cambiado a 100% para adaptarse al ancho de la pantalla */
+  width: 100%;
+  /* Cambiado a 100% para adaptarse al ancho de la pantalla */
   height: 98px;
   border: solid 2px black;
   box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.648);
-  margin-top: -67px;
+  margin-top: -85px;
 }
 
 .logo {
@@ -78,7 +79,7 @@ nav a:hover {
 .links {
   display: flex;
   justify-content: space-between;
-  width: 15rem;
+  width: 23rem;
 }
 
 .link {
@@ -93,4 +94,26 @@ nav a:hover {
   nav a:hover {
     font-size: 18px;
   }
+}
+
+.button {
+  display: flex;
+  padding: 6px 15px;
+  background-color: #0174e7ce;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  /* Agregar box-shadow a la transición */
+  box-shadow: 3px 4px 9px rgba(240, 240, 240, 0.534);
+  /* Añadir sombreado */
+}
+
+.button:hover {
+  background-color: #ff0000a8;
+  box-shadow: 0px 6px 12px rgb(251, 255, 3);
 }

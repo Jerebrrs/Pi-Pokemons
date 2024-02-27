@@ -17,8 +17,10 @@
     -webkit-backdrop-filter: blur(5px);
     border-radius: 30px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-
+    border: 1px solid rgba(255, 255, 255, 0.822);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Agregar box-shadow a la transición */
+    box-shadow: 1px 5px 7px rgba(0, 47, 255, 0.418);
 }
 
 .mainContainer:hover {
@@ -33,12 +35,12 @@
     color: rgb(248, 248, 248);
     font-size: 14px;
     border-radius: 5px;
-    background-color: rgb(22, 29, 28);
+    background-color: rgb(52, 126, 115);
     width: 40px;
     height: 40px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     /* Agregar box-shadow a la transición */
-    box-shadow: 0px 4px 8px rgba(38, 70, 134, 0.931);
+    box-shadow: 3px 4px 8px rgb(5, 84, 243);
 }
 
 
