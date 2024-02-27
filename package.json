@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@rollup/plugin-image": "^3.0.3"
+  }
+}
