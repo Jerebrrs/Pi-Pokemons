@@ -17,8 +17,6 @@ function Details() {
 
   const { id } = useParams();
 
-
-
   useEffect(() => {
     dispatch(getPokemonId(id));
     dispatch(getAllImgTypes());
@@ -26,12 +24,12 @@ function Details() {
 
 
 
-  const images = pokeDetail
+  const images = pokeDetail.createdInDb
     ? pokeDetail.type?.map((type) => {
       const typeName = typeof type === 'string' ? type : type.name;
       return imgTypes.find((imgType) => imgType.type === typeName);
     })
-    : pokeDetail.type?.map((type) => {
+    : pokeDetail.types?.map((type) => {
       const typeName = typeof type === 'string' ? type : type.name;
       return imgTypes.find((imgType) => imgType.type === typeName);
     });
@@ -79,7 +77,7 @@ function Details() {
 
           <div>
 
-            {pokeDetail.type?.map((type) => {
+            {pokeDetail.types?.map((type) => {
               const foundImage = images && images.find((element) => element && (element.type === type.name || element.type === type));
               if (foundImage) {
                 return (
