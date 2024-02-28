@@ -80,14 +80,7 @@ function Details() {
           <div>
 
             {pokeDetail.type?.map((type) => {
-              const foundImage = images && images.find((element) => {
-                if (typeof type === 'string') {
-                  return element && element.type === type;
-                } else if (typeof type === 'object') {
-                  return element && element.type === type.name;
-                }
-                return false;
-              });
+              const foundImage = images && images.find((element) => element && (element.type === type.name || element.type === type));
               if (foundImage) {
                 return (
                   <div className={stylo.types} key={`${type.name} ${pokeDetail.id}`}>
@@ -96,9 +89,7 @@ function Details() {
                   </div>
                 );
               }
-              return (<div className={stylo.types} key={`${type.name} ${pokeDetail.id}`}>
-                <h3 >{type.name}</h3>
-              </div>)
+              return null;
             })}
           </div>
         </div>
@@ -107,4 +98,4 @@ function Details() {
   )
 }
 
-export default Details
+export default Details;
