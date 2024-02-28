@@ -17,7 +17,7 @@ function Details() {
 
   const { id } = useParams();
 
- 
+
 
   useEffect(() => {
     dispatch(getPokemonId(id));
@@ -78,9 +78,16 @@ function Details() {
           </div>
 
           <div>
-        
+
             {pokeDetail.type?.map((type) => {
-              const foundImage = images && images.find((element) => element && (element.type === type.name || element.types === type));
+              const foundImage = images && images.find((element) => {
+                if (typeof type === 'string') {
+                  return element && element.type === type;
+                } else if (typeof type === 'object') {
+                  return element && element.type === type.name;
+                }
+                return false;
+              });
               if (foundImage) {
                 return (
                   <div className={stylo.types} key={`${type.name} ${pokeDetail.id}`}>
@@ -89,7 +96,9 @@ function Details() {
                   </div>
                 );
               }
-              return null;
+              return (<div className={stylo.types} key={`${type.name} ${pokeDetail.id}`}>
+                <h3 >{type.name}</h3>
+              </div>)
             })}
           </div>
         </div>
