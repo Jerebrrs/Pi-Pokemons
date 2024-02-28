@@ -27,11 +27,11 @@ function Details() {
 
 
   const images = pokeDetail
-    ? pokeDetail.types?.map((type) => {
+    ? pokeDetail.type?.map((type) => {
       const typeName = typeof type === 'string' ? type : type.name;
       return imgTypes.find((imgType) => imgType.type === typeName);
     })
-    : pokeDetail.types?.map((type) => {
+    : pokeDetail.type?.map((type) => {
       const typeName = typeof type === 'string' ? type : type.name;
       return imgTypes.find((imgType) => imgType.type === typeName);
     });
@@ -79,7 +79,7 @@ function Details() {
 
           <div>
         
-            {pokeDetail.types?.map((type) => {
+            {pokeDetail.type?.map((type) => {
               const foundImage = images && images.find((element) => element && (element.type === type.name || element.types === type));
               if (foundImage) {
                 return (
