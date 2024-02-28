@@ -10,7 +10,7 @@ const getPokemon = async () => {
         return pokemonData.data;
     });
 
-    const promiseData = await Promise.all(arrayPromesa);          //usamos promise para esperar que toda las solicitudes sean un array
+    const promiseData = await Promise.all(arrayPromesa);          // promise para esperar que toda las solicitudes sean un array
 
 
 
@@ -54,34 +54,6 @@ const getPokemonsName = async (name, info) => {
 }
 
 
-// const getpokemonsDB = async () => {
-//     const pokeInfoDB = await Pokemon.findAll({
-//         include: [{
-//             model: Type,
-//             attributes: ['name'],
-//             through: {
-//                 attributes: [],
-//             },
-//         },]
-//     });
-
-//     const pokemonDataFromDB = pokeInfoDB.map(pokemon => ({
-//         id: pokemon.id,
-//         name: pokemon.name,
-//         image: pokemon.image,
-//         pokedex: pokemon.pokedex,
-//         hp: pokemon.hp,
-//         attack: pokemon.attack,
-//         defense: pokemon.defense,
-//         speed: pokemon.speed,
-//         height: pokemon.height,
-//         weight: pokemon.weight,
-//         types: pokemon.Types.map(type => type.name)
-//     }));
-
-//     console.log(pokemonDataFromDB);
-//     return pokemonDataFromDB;
-// }
 const getpokemonsDB = async () => {
     const pokeInfoDB = await Pokemon.findAll({
 

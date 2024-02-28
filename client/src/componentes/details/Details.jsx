@@ -26,7 +26,7 @@ function Details() {
 
 
 
-  const images = pokeDetail.createInDb
+  const images = pokeDetail
     ? pokeDetail.types?.map((type) => {
       const typeName = typeof type === 'string' ? type : type.name;
       return imgTypes.find((imgType) => imgType.type === typeName);
@@ -83,9 +83,9 @@ function Details() {
               const foundImage = images && images.find((element) => element && (element.type === type.name || element.types === type));
               if (foundImage) {
                 return (
-                  <div key={`${type.name} ${pokeDetail.id}`}>
+                  <div className={stylo.types} key={`${type.name} ${pokeDetail.id}`}>
                     <img src={foundImage.url} alt={type.name} />
-                    <h3 className={stylo.types}>{type.name}</h3>
+                    <h3 >{type.name}</h3>
                   </div>
                 );
               }

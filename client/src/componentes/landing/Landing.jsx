@@ -15,10 +15,10 @@ function Landing() {
                     <img className={stylos.img} src={pika} alt='pika' />
                 </div>
 
-                <h2>Tu camino como</h2>
-                <h2>Entrenador Pokemons</h2>
+                <h2>Your path like</h2>
+                <h2>Pokemon Trainer</h2>
                 <Link to='/home'>
-                    <button className={stylos.butn}>Comienza</button>
+                    <button className={stylos.butn}>Starts</button>
                 </Link>
 
             </div>
