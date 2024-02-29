@@ -3,10 +3,12 @@
 	justify-content: center;
 	background-image: url('../../Imagenes/PokemonGroup.jpg');
 	padding: 2% 6% 3%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    width: 87vw;
+
+	background-size: cover;
+	height: 100%;
+	width: 87vw;
+	background-attachment: fixed;
+	background-repeat: repeat-y;
 }
 
 .infoContainer {
@@ -39,10 +41,13 @@
 }
 
 .statsContainer {
-    display: flex;
-    flex-wrap: wrap; /* Ajustar el envoltorio flexible */
-    justify-content: space-between; /* Espaciar los elementos */
-    margin-bottom: 20px; /* Ajustar el margen inferior */
+	display: flex;
+	flex-wrap: wrap;
+	/* Ajustar el envoltorio flexible */
+	justify-content: space-between;
+	/* Espaciar los elementos */
+	margin-bottom: 20px;
+	/* Ajustar el margen inferior */
 }
 
 .statsContainer img {
@@ -55,9 +60,12 @@
 }
 
 .stats {
-    text-align: center; /* Centrar el contenido */
-    flex-basis: 30%; /* Establecer el ancho máximo para cada elemento */
-    margin-bottom: 10px; /* Agregar margen inferior */
+	text-align: center;
+	/* Centrar el contenido */
+	flex-basis: 30%;
+	/* Establecer el ancho máximo para cada elemento */
+	margin-bottom: 10px;
+	/* Agregar margen inferior */
 }
 
 .imgPokemon {
@@ -82,37 +90,46 @@
 }
 
 .button {
-    display: flex;
-    padding: 10px 20px;
-    background-color: #07121d;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-  
-	transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Agregar box-shadow a la transición */
-    box-shadow: 0px 4px 8px rgba(38, 70, 134, 0.931); /* Añadir sombreado */
+	display: flex;
+	padding: 10px 20px;
+	background-color: #07121d;
+	color: white;
+	text-decoration: none;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+
+	transition: background-color 0.3s ease, box-shadow 0.3s ease;
+	/* Agregar box-shadow a la transición */
+	box-shadow: 0px 4px 8px rgba(38, 70, 134, 0.931);
+	/* Añadir sombreado */
 }
 
 .button:hover {
-    background-color: #1e4a78;
+	background-color: #1e4a78;
 	box-shadow: 0px 6px 12px rgb(23, 92, 161);
 }
+
 .types {
-    text-align: center; /* Centrar el contenido */
-    flex-basis: 30%; /* Establecer el ancho máximo para cada elemento */
-    margin-top: 2px; /* Ajustar el margen superior */
+	text-align: center;
+	/* Centrar el contenido */
+	flex-basis: 30%;
+	/* Establecer el ancho máximo para cada elemento */
+	margin-top: 2px;
+	/* Ajustar el margen superior */
 	margin-left: 230px;
 }
 
 .types img {
-    max-width: 100px; /* Ajustar el tamaño máximo de la imagen */
+	max-width: 100px;
+	/* Ajustar el tamaño máximo de la imagen */
 }
 
 .types h3 {
-    text-transform: capitalize;
-    font-size: 16px; /* Reducir el tamaño de la fuente si es necesario */
-    margin-top: 5px; /* Ajustar el margen superior para separación */
+	text-transform: capitalize;
+	font-size: 16px;
+	/* Reducir el tamaño de la fuente si es necesario */
+	margin-top: 5px;
+	/* Ajustar el margen superior para separación */
 }

@@ -1,33 +1,38 @@
 .container {
     display: flex;
     justify-content: space-around;
-    align-items: flex-end; /* Alinea los elementos en la parte inferior */
+    align-items: flex-end;
+    /* Alinea los elementos en la parte inferior */
     border: 30px;
     background-image: url('../../Imagenes/PokemonGroup.jpg');
     padding: 2% 6% 3%;
-    background-repeat: no-repeat;
+
     background-size: cover;
-    height: 100vh;
+    height: 100%;
     width: 87vw;
+    background-attachment: fixed;
+    background-repeat: repeat-y;
 }
+
 .infoContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	/* Tamaño */
-	width: 500px;
-	height: 800px;
-	padding: 24px;
-	margin: 24px;
-	/* Glasmorfismo */
-	background: rgba(255, 255, 255, 0.6);
-	box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Tamaño */
+    width: 500px;
+    height: 800px;
+    padding: 24px;
+    margin: 24px;
+    /* Glasmorfismo */
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 20px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
 .right {
     display: flex;
     flex-direction: column;
@@ -41,7 +46,7 @@
     margin-top: 90px;
 }
 
-.right > h3 {
+.right>h3 {
     font-family: "Prompt", sans-serif;
     font-weight: normal;
     font-size: larger;
@@ -60,7 +65,7 @@
     cursor: pointer;
 }
 
-.butn > a {
+.butn>a {
     text-decoration: none;
     font-size: medium;
 }
@@ -85,6 +90,8 @@
 
 
 .img {
-    width: 550px; /* Ajusta el ancho de la imagen según sea necesario */
-    margin-left: -40px; /* Ajusta la posición hacia la izquierda */
+    width: 550px;
+    /* Ajusta el ancho de la imagen según sea necesario */
+    margin-left: -40px;
+    /* Ajusta la posición hacia la izquierda */
 }

@@ -3,10 +3,11 @@
 	justify-content: center;
 	background-image: url('../../Imagenes/PokemonGroup.jpg');
 	padding: 2% 6% 3%;
-	background-repeat: no-repeat;
 	background-size: cover;
-	height: 100vh;
+	height: 100%;
 	width: 87vw;
+	background-attachment: fixed;
+	background-repeat: repeat-y;
 }
 
 .infoContainer {
@@ -92,7 +93,7 @@
 	-webkit-appearance: none;
 	appearance: none;
 	outline: none;
-	
+
 	background-repeat: no-repeat, repeat;
 	background-position: right 18px top 50%;
 	background-size: 12px auto, 100%;
@@ -101,21 +102,26 @@
 .customSelect:focus {
 	border: 2px solid var(--primaryFocus);
 }
+
 .imageContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--white);
-    height: 100px;
-    width: 98px;
-    border-radius: 50%;
-    overflow: hidden; /* Para ocultar partes de la imagen que sobresalgan del contenedor */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--white);
+	height: 100px;
+	width: 98px;
+	border-radius: 50%;
+	overflow: hidden;
+	/* Para ocultar partes de la imagen que sobresalgan del contenedor */
 }
 
 .imageContainer img {
-    max-width: 100%; /* La imagen nunca será más grande que el contenedor */
-    max-height: 100%; /* La imagen nunca será más alta que el contenedor */
+	max-width: 100%;
+	/* La imagen nunca será más grande que el contenedor */
+	max-height: 100%;
+	/* La imagen nunca será más alta que el contenedor */
 }
+
 .buttonX {
 	position: sticky;
 	color: var(--white);

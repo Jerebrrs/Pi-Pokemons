@@ -13,7 +13,7 @@ function About() {
             <button className={stylos.button}>
               HOME
             </button>
-            {/* <p className={stylos.link}>HOME</p> */}
+
           </Link>
 
         </div>
@@ -25,22 +25,25 @@ function About() {
           <div className={stylos.subtitle}>
             <p>Full Stack Developer en processo</p>
             <p> | HTML | CSS | Javascript | React | Redux | Node | Express | SQL</p>
+            <a href="https://www.linkedin.com/in/kevinjbarrios/" target="_blank" >
+              <img className={stylos.ksli} src={linkedlin} alt="linkedin" />
+            </a>
+            <a href='https://github.com/Jerebrrs' target="_blank" >
+              <img className={stylos.ksgh} src={git} alt="git" />
+            </a>
           </div>
-
-        </div>
-        <div className={stylos.ks}>
-          <a href="https://www.linkedin.com/in/kevinjbarrios/" target="_blank" >
-            <img className={stylos.ksli} src={linkedlin} alt="linkedin" />
-            LINKEDLIN
-          </a>
-          <a  href='https://github.com/Jerebrrs' target="_blank" >
-            <img className={stylos.ksgh}  src={git} alt="git" />
-            GIT HUB
-          </a>
+          {/* <div className={stylos.ks}>
+            <a href="https://www.linkedin.com/in/kevinjbarrios/" target="_blank" >
+              <img className={stylos.ksli} src={linkedlin} alt="linkedin" />
+            </a>
+            <a href='https://github.com/Jerebrrs' target="_blank" >
+              <img className={stylos.ksgh} src={git} alt="git" />
+            </a>
+          </div> */}
         </div>
       </div>
     </div >
   )
 }
 
-export default About
+export default About;

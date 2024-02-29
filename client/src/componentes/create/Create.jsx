@@ -313,7 +313,7 @@ function Create() {
                         }
                     </div>
                     <button type='submit'
-                        disabled={error.name || error.hp || error.image || error.type || error.attack}
+                        disabled={error.name || error.hp || error.image || error.type || error.attack || error.type}
                     >
                         Create Pokemon
                     </button>

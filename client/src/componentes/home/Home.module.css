@@ -3,11 +3,11 @@
   border: 3px;
   background-image: url('../../Imagenes/PokemonGroup.jpg');
   padding: 5% 4%;
-  background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
-  width: 92vw;
- 
+  height: 100%;
+  width: 90%; /* Cambiado a porcentaje */
+  background-attachment: fixed;
+  background-repeat: repeat-y;
 }
 .filterContainer {
 	display: flex;
